@@ -1,10 +1,12 @@
 <h1>Create an article</h1>
 
 <!-- Show possible error messages -->
-<% @article.errors.full_messages.each do |msg| %>
-  <ul>
-    <li> <%= msg %> </li>
-  </ul>
+<% if @article.errors.any? %>
+  <% @article.errors.full_messages.each do |msg| %>
+    <ul>
+      <li> <%= msg %> </li>
+    </ul>
+  <% end %>
 <% end %>
 
 <%= form_for @article do |f| %>
