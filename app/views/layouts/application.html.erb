@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>AlphaBlog</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  
+  <style>
+
+  /*h1 { */
+  /*   position: absolute; */
+  /*   top: 15%; */
+  /*   left: 15%; */
+  /*   width: 100%; */
+  /*   color: white;*/
+  /*}*/
+  a:visited {
+    color:#0096ae;
+  }
+  
+  header {
+      color:white;
+  }
+  nav {
+      line-height:30px;
+      background-color:#FFFFFF;
+      color:#0096ae;
+      height:300px;
+      width:100px;
+      float:left;
+      padding:5px;	      
+  }
+  section {
+      width:350px;
+      float:left;
+      padding:10px;	 
+      color:#0096ae;
+  }
+  footer {
+      width:80%;
+      background-color:#00a4bd;
+      color:white;
+      clear:both;
+      text-align:center;
+      padding:5px;	 	 
+  }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <%= image_tag "blog-header", style: 'height:80%;width:80%;' %>
+  <!--<h1>Alpha Blog</h1>-->
+</header>
+
+<nav>
+  <%= link_to "Home Page", root_path %>
+  Link 1<br>
+  Link 2<br>
+  <%= link_to "About", about_path %>
+</nav>
+
+<section>
+<%= yield %>
+</section>
+
+<footer>
+  Copyright ©fscarpin
+</footer>
+
+</body>
+</html>
