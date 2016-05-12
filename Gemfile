@@ -45,3 +45,12 @@ group :development do
   gem 'spring'
 end
 
+group :production do
+  # Postgress dabase
+  gem 'pg'
+
+  # Needed for eroku
+  gem 'rails_12factor'
+
+end
+
