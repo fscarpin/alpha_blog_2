@@ -7,54 +7,7 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 
-  <style>
-
-  table, th, td {
-    border-collapse: collapse;
-  }
-
-  th, td {
-      padding: 5px;
-      text-align: left;
-  }
-
-  /* Unvisited link*/
-  a {
-    color:#0096ae;
-  }
-
-  /* Visited link */
-  a:visited {
-    color:#0096ae;
-  }
-
-  header {
-      color:white;
-  }
-  nav {
-      line-height:30px;
-      background-color:#FFFFFF;
-      color:#0096ae;
-      height:300px;
-      width:150px;
-      float:left;
-      padding:5px;
-  }
-  section {
-      width:350px;
-      float:left;
-      padding:10px;
-      color:#0096ae;
-  }
-  footer {
-      width:80%;
-      background-color:#00a4bd;
-      color:white;
-      clear:both;
-      text-align:center;
-      padding:5px;
-  }
-  </style>
+  <%= render "layouts/style" %>
 </head>
 
 <body>
