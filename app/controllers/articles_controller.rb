@@ -1,19 +1,35 @@
 class ArticlesController < ApplicationController
 
-  def new
-    @article = Article.new
-  end
+  # The set article method will always be called before actions edit, update, show and destroy.
+  before_action :set_article, only: [:edit, :update, :show, :destroy]
 
   def index
     @articles = Article.all
   end
 
+  def show
+  end
+
+  def new
+    @article = Article.new
+  end
+
   def edit
-    @article = Article.find(params[:id])
+  end
+
+  def create
+    #   render plain: params[:article].inspect
+    @article = Article.new(article_params)
+    if @article.save
+      # The hash flash will only store the message for next request. After that it'll be cleared
+      flash[:notice] = "Article has been saved successfully"
+      redirect_to article_path(@article)
+    else
+      render :new
+    end
   end
 
   def update
-    @article = Article.find(params[:id])
     if @article.update(article_params)
       flash[:notice] = "Article has been edited successfully"
       redirect_to article_path(@article)
@@ -22,31 +38,7 @@ class ArticlesController < ApplicationController
     end
   end
 
-  def create
-    #   render plain: params[:article].inspect
-    @article = Article.new(article_params)
-    if @article.save
-      flash[:notice] = "Article has been saved successfully"
-      redirect_to article_path(@article)
-    else
-      render :new
-    end
-    # if @article.save
-    #   # The hash flash will only store the message for next request. After that it'll be cleared
-    #   flash[:notice] = "Article has been saved successfully"
-    #   # redirect_to article_path(@article)
-    #   render plain: "test"
-    # else
-    #         render :new
-    # end
-  end
-
-  def show
-    @article = Article.find(params[:id])
-  end
-
   def destroy
-    @article = Article.find(params[:id])
     @article.destroy
     flash[:notice] = "Article has been deleted"
     redirect_to articles_path
@@ -55,5 +47,9 @@ class ArticlesController < ApplicationController
   private
     def article_params
       params.require(:article).permit(:title, :description)
+    end
+
+    def set_article
+      @article = Article.find(params[:id])
     end
 end
