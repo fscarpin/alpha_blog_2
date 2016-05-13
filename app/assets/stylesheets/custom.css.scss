@@ -19,8 +19,12 @@ $navbar-default-bg: #43a9e8;
   text-decoration: none;
 }
 
+#main_container {
+  padding-top: 5px;
+}
+
 // Classes are accessed using dot at the beginning
-.home_center {
+.center {
   text-align: center;
 }
 
