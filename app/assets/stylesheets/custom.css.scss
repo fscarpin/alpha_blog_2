@@ -35,14 +35,19 @@ $navbar-default-bg: #43a9e8;
   height: 650px;
 }
 
-// Partials are simple accessed like this
 .footer {
+  margin-top: 30px;
   padding-top: 10px;
   border-top: 1px solid #e6e6e6;
+  color: #347ab7;
 }
 
-.footer {
-  color: #347ab7;
+.footer small {
+  color: #969696;
   float: left;
+}
 
+.footer ul {
+  float: right;
+  list-style-type: none;
 }
