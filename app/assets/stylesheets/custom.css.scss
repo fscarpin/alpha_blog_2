@@ -1,2 +1,24 @@
+$navbar-default-bg: #43a9e8;
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+// Ids are accessed using hash at the beginning
+#logo {
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+#nav_link {
+  color: #e6e6e6
+}
+
+// hover means when the mouse is over it
+#nav_link:hover {
+  text-decoration: none;
+}
+
+.center {
+  text-align: center;
+}

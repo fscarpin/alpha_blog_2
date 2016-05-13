@@ -6,31 +6,13 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-
-  <%= render "layouts/style" %>
 </head>
 
 <body>
-
-<header>
-  <%= image_tag "blog-header", style: 'height:80%;width:80%;' %>
-  <!--<h1>Alpha Blog</h1>-->
-</header>
-
-<nav>
-  <%= link_to "Home Page", root_path %> <br>
-  <%= link_to "Manage Articles", articles_path %> <br>
-  <%= link_to "About", about_path %> <br>
-</nav>
-
-<section>
-  <%= render "layouts/messages" %>
-  <%= yield %>
-</section>
-
-<footer>
-  Copyright ©fscarpin
-</footer>
-
+  <div class="container center">
+    <%= render "layouts/navigation" %>
+    <%= render "layouts/messages" %>
+    <%= yield %>
+    </div>
 </body>
 </html>
