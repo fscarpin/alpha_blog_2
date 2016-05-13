@@ -19,6 +19,30 @@ $navbar-default-bg: #43a9e8;
   text-decoration: none;
 }
 
-.center {
+// Classes are accessed using dot at the beginning
+.home_center {
   text-align: center;
+}
+
+.home_h1 {
+  padding-top: 50px;
+  font-weight: bold;
+}
+
+.jumbotron {
+  background-image: asset-url('home_image.jpg');
+  // background-size: cover;
+  height: 650px;
+}
+
+// Partials are simple accessed like this
+.footer {
+  padding-top: 10px;
+  border-top: 1px solid #e6e6e6;
+}
+
+.footer {
+  color: #347ab7;
+  float: left;
+
 }
