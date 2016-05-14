@@ -1,11 +1,13 @@
-<% if flash.any? %>
-  <div class="alert alert-success message" role="alert">
-    <% flash.each do |name, msg| %>
-      <ul>
-        <li>
-          <%= msg %>
-        </li>
-      </ul>
-    <% end %>
-  </div>
-<% end %>
+<div class="container">
+  <% if flash.any? %>
+    <div class="alert alert-success message" role="alert">
+      <% flash.each do |name, msg| %>
+        <ul>
+          <li>
+            <%= msg %>
+          </li>
+        </ul>
+      <% end %>
+    </div>
+  <% end %>
+</div>
