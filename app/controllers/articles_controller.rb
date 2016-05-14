@@ -22,7 +22,7 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
     if @article.save
       # The hash flash will only store the message for next request. After that it'll be cleared
-      flash[:notice] = "Article has been saved successfully"
+      flash[:success] = "Article has been saved successfully"
       redirect_to article_path(@article)
     else
       render :new
@@ -31,7 +31,7 @@ class ArticlesController < ApplicationController
 
   def update
     if @article.update(article_params)
-      flash[:notice] = "Article has been edited successfully"
+      flash[:success] = "Article has been edited successfully"
       redirect_to article_path(@article)
     else
       render :edit
@@ -40,7 +40,7 @@ class ArticlesController < ApplicationController
 
   def destroy
     @article.destroy
-    flash[:notice] = "Article has been deleted"
+    flash[:danger] = "Article has been deleted"
     redirect_to articles_path
   end
 
