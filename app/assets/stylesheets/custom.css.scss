@@ -11,7 +11,7 @@ $navbar-default-bg: #43a9e8;
 }
 
 #nav_link {
-  color: #e6e6e6
+  color: #fff
 }
 
 // hover means when the mouse is over it
@@ -23,20 +23,15 @@ $navbar-default-bg: #43a9e8;
   padding-top: 5px;
 }
 
-// Classes are accessed using dot at the beginning
-.center {
-  text-align: center;
-}
-
-.home_h1 {
-  padding-top: 50px;
-  font-weight: bold;
-}
-
 .jumbotron {
   background-image: asset-url('home_image.jpg');
   // background-size: cover;
   height: 650px;
+}
+
+.jumbotron h1 {
+  padding-top: 50px;
+  font-weight: bold;
 }
 
 .footer {
@@ -53,5 +48,9 @@ $navbar-default-bg: #43a9e8;
 
 .footer ul {
   float: right;
+  list-style-type: none;
+}
+
+.message ul {
   list-style-type: none;
 }

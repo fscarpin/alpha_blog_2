@@ -1,0 +1,11 @@
+<% if @article.errors.any? %>
+  <div class="alert alert-danger" role="alert">
+  <h4><%= pluralize(@article.errors.count, "error")%> prevented this article from being saved</h4>
+    <% @article.errors.full_messages.each do |msg| %>
+      <ul>
+        <li> <%= msg %> </li>
+      </ul>
+    <% end %>
+  </div>
+<% end %>
+

@@ -1,20 +1,15 @@
 <!-- Show possible error messages -->
-<% if @article.errors.any? %>
-  <% @article.errors.full_messages.each do |msg| %>
-    <ul>
-      <li> <%= msg %> </li>
-    </ul>
-  <% end %>
-<% end %>
+<%= render "errors" %>
 
 <!-- Disabled the automatic error of bootstrap_form_for -->
 <%= bootstrap_form_for @article, inline_errors: false do |f| %>
     <%= f.text_field :title, autofocus: true %>
     <%= f.text_area :description, rows: 15 %>
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-primary"%>
 <% end %>
 
-<div class="center">
+<!-- text-center is provided by bootstrap -->
+<div class="text-center">
   <p>
     [ <%= link_to "Back to articles", articles_path %> ]
   </p>
