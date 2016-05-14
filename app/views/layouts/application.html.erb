@@ -9,14 +9,18 @@
 </head>
 
 <body>
-  <div class="container" id="nav_container">
+  <div class="container nav_container">
     <%= render "layouts/navigation" %>
   </div>
 
-  <%= render "layouts/messages" %>
+  <%= render "shared/messages" %>
 
   <div class="container">
-    <%= yield %>
+    <div class="row">
+      <div class="col-xs-10 col-xs-offset-1">
+        <%= yield %>
+      </div>
+    </div>
   </div>
 
   <%= render "layouts/footer" %>
