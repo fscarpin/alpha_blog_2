@@ -1,6 +1,12 @@
-<h1><%= @article.title %></h1>
-<p><%= @article.description %></p> </br>
-
-<p>
-  <%= link_to "Edit", edit_article_path(@article) %> | <%= link_to "Back", articles_path %>
-</p>
+<div class="well">
+  <div class=text-center>
+    <h3><%= @article.title %></h3>
+  </div>
+  <!-- Simple_format show the text as it is... if the user pressed enter, it'll keep this new line -->
+  <p><%= simple_format(@article.description) %></p></br>
+  <!-- Show the Edit, Delete and View all Articles button -->
+  <%= link_to "Edit", edit_article_path(@article), class: "btn btn-primary" %>
+  <%= link_to "View all articles", articles_path, class: "btn btn-success" %>
+  <%= link_to "Delete", article_path(@article), method: :delete, class: "btn btn-danger",
+      data: {confirm: "Are you sure?"} %>
+</div>
