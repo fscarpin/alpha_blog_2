@@ -22,7 +22,6 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
     # Workaround to create articles while the user log in feature is not ready
     @article.user = User.first
-
     if @article.save
       # The hash flash will only store the message for next request. After that it'll be cleared
       flash[:success] = "Article has been saved successfully"
