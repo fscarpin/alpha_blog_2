@@ -1,21 +1,13 @@
 module ApplicationHelper
-  # def bootstrap_class_for flash_type
-  #   { success: "alert-success", danger: "alert-danger", warning: "alert-warning", info: "alert-info" }[flash_type.to_sym] || flash_type.to_s
-  # end
+  # returns the gravatar image for a given user. You can also specify the size.
+  # Example: gravatar_for(@user, size: 190)
+  def gravatar_for(user, options = {size: 80})
+    gravatar_id = Digest::MD5::hexdigest(user.email.downcase)
+    size = options[:size]
+    image_tag "http://gravatar.com/avatar/#{gravatar_id}?s=#{size}", alt: user.username, class: "img-circle"
+  end
 
-  # def flash_messages(opts = {})
-  #   flash.each do |msg_type, message|
-  #     concat(content_tag(:div, message, class: "alert #{bootstrap_class_for(msg_type)} alert-dismissible fade in", role: 'alert') do
-  #       concat(content_tag(:button, class: 'close', data: { dismiss: 'alert' }) do
-  #         concat content_tag(:span, '&times;'.html_safe, 'aria-hidden' => true)
-  #         concat content_tag(:span, 'Close', class: 'sr-only')
-  #       end)
-  #       concat message
-  #     end)
-  #   end
-  #   nil
-  # end
-
+  # returns the kind of alert needed based on the flash message type
   def bootstrap_class_for flash_type
     # binding.pry
     case flash_type

@@ -1,27 +1,5 @@
-<div class="container">
-  <div class="text-center">
-    <h1>Article List</h1>
-  </div>
-
-  <% @articles.each do |article| %>
-    <div class="well well-lg">
-      <!-- Show the article title -->
-      <div class="article_title">
-        <%= link_to article.title, article_path(article) %><br>
-      </div>
-      <!-- Show the article description -->
-      Description: <%= article.description.truncate_words(20, omission: '... (continued)') %><br><br>
-      <!-- Show the user and the dates of the article -->
-      <small>
-        Created by <%= article.user.username %>, <%= time_ago_in_words(article.created_at) %> ago
-        , last updated: <%= time_ago_in_words(article.updated_at) %>
-      </small>
-      <!-- Buttons to Edit and Delete the article -->
-      <div class="article_actions">
-        <%= link_to "Edit this article", edit_article_path(article), class: "btn btn-primary btn-xs" %>
-        <%= link_to "Delete this article", article_path(article), method: :delete,
-                    class: "btn btn-danger btn-xs", data: {confirm: "Are you sure?"} %>
-      </div>
-    </div>
-  <% end %>
+<div class="text-center">
+  <h1>Article List</h1>
 </div>
+
+<%= render "articles_list", articles: @articles %>

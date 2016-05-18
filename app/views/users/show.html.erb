@@ -1,0 +1,5 @@
+<div class="text-center">
+  <h3>Welcome to <%= @user.username %>'s page' </h3>
+  <%= gravatar_for(@user, size: 190) %>
+  <%= render "articles/articles_list", articles: @user.articles %>
+</div>
