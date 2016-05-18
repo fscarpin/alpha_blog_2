@@ -1,19 +1,19 @@
-    <!-- Show possible error messages. The article object is passed to our partial -->
-    <%= render "shared/errors", model: @article %>
+<!-- Show possible error messages. The article object is passed to our partial -->
+<%= render "shared/errors", model: @article %>
 
-    <div class="panel panel-info">
-      <div class="panel-heading">
-        <h3 class="panel-title text-center"><%= locals[:form_title]%></h3>
-      </div>
-      <div class="panel-body">
-      <!-- Disabled the automatic error of bootstrap_form_for -->
-      <%= bootstrap_form_for @article do |f| %>
-          <%= f.text_field :title, autofocus: true %>
-          <%= f.text_area :description, rows: 15 %>
-          <%= f.submit class: "btn btn-primary"%>
-      <% end %>
-      </div>
-    </div>
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title text-center"><%= locals[:form_title]%></h3>
+  </div>
+  <div class="panel-body">
+  <!-- bootstrap_form_for -->
+  <%= bootstrap_form_for @article do |f| %>
+      <%= f.text_field :title, autofocus: true %>
+      <%= f.text_area :description, rows: 15 %>
+      <%= f.submit class: "btn btn-primary"%>
+  <% end %>
+  </div>
+</div>
 
 <!-- text-center is provided by bootstrap -->
 <div class="text-center">

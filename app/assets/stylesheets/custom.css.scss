@@ -18,9 +18,9 @@ $navbar-default-bg: #3B5575;
 #nav_link:hover {
   text-decoration: none;
 }
-
-.nav_container {
-  padding-top: 10px;
+.margin-all-pages {
+  margin-right: 10px;
+  margin-left: 10px;
 }
 
 .home_h1 {
@@ -39,6 +39,8 @@ $navbar-default-bg: #3B5575;
 }
 
 .footer {
+  margin-top: 40px;
+  margin-bottom: 40px;
   padding-top: 10px;
   border-top: 1px solid #e6e6e6;
   color: #347ab7;
@@ -65,7 +67,6 @@ $navbar-default-bg: #3B5575;
 
 .article_title {
   font-size: 1.7em;
-
 }
 
 .article_description {
