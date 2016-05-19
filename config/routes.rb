@@ -12,6 +12,12 @@ Rails.application.routes.draw do
 
   get 'signup', to: 'users#new'
   resources :users, except: [:new]
+
+  # Login controll
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  delete 'login', to: 'sessions#destroy'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

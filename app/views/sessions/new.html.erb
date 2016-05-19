@@ -1,0 +1,14 @@
+<h1 class="text-center">Login</h1>
+
+<div class="row">
+  <!-- This will send a post (since it's a form) with the parameters (:email and :password) inside session
+       So to get it in the controller, use params[session][email] for example-->
+  <%= bootstrap_form_for(:session, layout: :horizontal, label_col: "col-xs-3", control_col: "col-xs-6",
+                         url: login_path) do |f| %>
+    <%= f.email_field :email, autofocus: true %>
+    <%= f.password_field :password %>
+    <%= f.form_group do %>
+      <%= f.submit "Login", class: "btn btn-primary" %>
+    <% end %>
+  <% end %>
+</div>
