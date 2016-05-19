@@ -5,7 +5,7 @@
       <%= link_to article.title, article_path(article) %><br>
     </div>
     <!-- Show the article description -->
-    Description: <%= article.description.truncate_words(20, omission: '... (continued)') %><br><br>
+    Description: <%= article.description.truncate_words(20, omission: '...') %><br><br>
     <!-- Show the user and the dates of the article -->
     <small>
       Created by <%= article.user.username %>, <%= time_ago_in_words(article.created_at) %> ago

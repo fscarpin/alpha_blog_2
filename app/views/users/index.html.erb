@@ -1,11 +1,19 @@
-<h1 class="text-center">Alpha Blog Users</h1><br>
+<div class="text-center">
 
-<% @users.each do |user| %>
-  <div class="row">
-    <div class="col-xs-4 col-xs-offset-4">
-      <div class="well well-lg">
-        <%= render "sumarized_user_info_list", user: user %>
+  <h1>Alpha Blog Users</h1><br>
+
+  <%= will_paginate @users, renderer: BootstrapPagination::Rails %>
+
+  <% @users.each do |user| %>
+    <div class="row">
+      <div class="col-xs-4 col-xs-offset-4">
+        <div class="well well-lg">
+          <%= render "sumarized_user_info_list", user: user %>
+        </div>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+
+  <%= will_paginate @users, renderer: BootstrapPagination::Rails %>
+
+</div>
