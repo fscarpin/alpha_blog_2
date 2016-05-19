@@ -1,7 +1,7 @@
 <!-- Show possible error messages. The article object is passed to our partial -->
 <%= render "shared/errors", model: @article %>
 
-<h3 class="text-center"><%= locals[:form_title]%></h3>
+<h1 class="text-center"><%= locals[:form_title]%></h1>
 
 <!-- bootstrap_form_for -->
 <%= bootstrap_form_for @article do |f| %>

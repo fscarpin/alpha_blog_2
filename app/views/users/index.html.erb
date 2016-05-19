@@ -1,0 +1,11 @@
+<h1 class="text-center">Alpha Blog Users</h1><br>
+
+<% @users.each do |user| %>
+  <div class="row">
+    <div class="col-xs-4 col-xs-offset-4">
+      <div class="well well-lg">
+        <%= render "sumarized_user_info_list", user: user %>
+      </div>
+    </div>
+  </div>
+<% end %>

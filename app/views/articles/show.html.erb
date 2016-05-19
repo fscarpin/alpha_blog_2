@@ -1,7 +1,9 @@
 <div class="well">
   <div class="text-center">
-    <h3><%= @article.title %></h3>
+    <small>Created by:</small>
   </div>
+  <%= render "users/sumarized_user_info_list", user: @article.user %>
+  <h1 class="text-center"><%= @article.title %></h1>
   <div class="article_description">
     <!-- Simple_format show the text as it is... if the user pressed enter, it'll keep this new line -->
     <p><%= simple_format(@article.description) %></p></br>
