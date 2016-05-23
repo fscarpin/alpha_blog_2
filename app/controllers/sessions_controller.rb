@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
 
   def create
     # Find the user
-    user = User.find_by(email: params[:session][:email])
+    user = User.find_by(email: params[:session][:email].downcase)
     # Get the password from the parameters
     password = params[:session][:password]
     # Try to authenticate the user

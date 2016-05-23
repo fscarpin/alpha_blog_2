@@ -3,7 +3,7 @@
     <p><h1>ALPHA BLOG</h1></p><br>
   </div>
   <!-- Only shows the Sign up button if the user is logged out -->
-  <% if !session[:user_id] %>
-    <p><%=button_to "Sign up", signup_path, class: "btn btn-danger btn-lg"%></p>
+  <% if !logged_in? %>
+    <p><%=link_to "Sign up", signup_path, class: "btn btn-danger btn-lg"%></p>
   <% end %>
 </div>
