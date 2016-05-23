@@ -24,10 +24,13 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+
+    return if !validate_signup_passwords
+
     if @user.save
       flash[:success] = "Welcome to Alpha Blog, #{@user.username}"
       session[:user_id] = @user.id
-      redirect_to articles_path
+      redirect_to user_path(@user)
     else
       render :new
     end
@@ -58,6 +61,18 @@ class UsersController < ApplicationController
       if @user != current_user
         flash[:danger] = "You can only edit your own profile"
         redirect_to(user_path current_user)
+      end
+    end
+
+    def validate_signup_passwords
+      password = params[:user]["password"]
+      confirm_password = params[:user]["confirm_your_password"]
+      if password != confirm_password
+        @user.errors.add(:password, "doesn't match. Make sure you specify the same password in both fields")
+        render :new
+        return false
+      else
+        return true
       end
     end
 end
