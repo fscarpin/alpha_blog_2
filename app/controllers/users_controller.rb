@@ -1,4 +1,14 @@
 class UsersController < ApplicationController
+
+  # Set the @user before show, edit and update methods
+  before_action :set_user, :only => [:show, :edit, :update]
+
+  # User must be logged in to edit and update profiles
+  before_action :require_user, :only => [:edit, :update]
+
+  # Users can only update their own profile
+  before_action :require_same_user, :only => [:edit, :update]
+
   def new
     @user = User.new
   end
@@ -9,7 +19,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
     @user_articles = @user.articles.paginate(:page => params[:page], :per_page => 5)
   end
 
@@ -24,11 +33,9 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
   end
 
   def update
-    @user = User.find(params[:id])
     if @user.update(user_params)
       flash[:success] = "Your account has been updated successfully"
       redirect_to articles_path
@@ -40,5 +47,16 @@ class UsersController < ApplicationController
   private
     def user_params
       params.require(:user).permit(:username, :email, :password)
+    end
+
+    def set_user
+      @user = User.find(params[:id])
+    end
+
+    def require_same_user
+      if @user != current_user
+        flash[:danger] = "You can only edit your own profile"
+        redirect_to(user_path current_user)
+      end
     end
 end
