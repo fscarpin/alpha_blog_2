@@ -3,6 +3,7 @@
 
   end
 
+  # Login: Create a new session
   def create
     # Find the user
     user = User.find_by(email: params[:session][:email].downcase)
@@ -22,6 +23,7 @@
     end
   end
 
+  # Logout: destroy the session
   def destroy
     # Remove the user_id from the session, and show a message
     session[:user_id] = nil

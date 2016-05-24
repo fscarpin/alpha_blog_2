@@ -11,7 +11,7 @@
   <!-- Show the Edit, Delete and View all Articles button -->
   <div class="article_actions">
     <%= link_to "View all articles", articles_path, class: "btn btn-success" %>
-    <% if logged_in? && current_user == @article.user %>
+    <% if (logged_in? && current_user == @article.user) || (current_user.admin?) %>
       <%= link_to "Edit", edit_article_path(@article), class: "btn btn-primary" %>
       <%= link_to "Delete", article_path(@article), method: :delete, class: "btn btn-danger",
                   data: {confirm: "Are you sure?"} %>

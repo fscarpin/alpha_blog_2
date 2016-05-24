@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   # Users can only update their own profile
   before_action :require_same_user, :only => [:edit, :update]
 
+  # Sign up form
   def new
     @user = User.new
   end
@@ -22,6 +23,7 @@ class UsersController < ApplicationController
     @user_articles = @user.articles.paginate(:page => params[:page], :per_page => 5)
   end
 
+  # Create a new user
   def create
     @user = User.new(user_params)
 
@@ -58,7 +60,7 @@ class UsersController < ApplicationController
     end
 
     def require_same_user
-      if @user != current_user
+      if @user != current_user && !@user.admin?
         flash[:danger] = "You can only edit your own profile"
         redirect_to(user_path current_user)
       end
