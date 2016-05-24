@@ -1,4 +1,4 @@
-<% if logged_in? && current_user.admin? %>
+<% if logged_in? && current_user.admin? && user != current_user %>
   <p class="user_actions">
   <%= link_to("Delete this user", user_path(user) , method: :delete,
               data: {confirm: "Are you sure you want to delete this user? ALL ARTICLES from this user will be DELETED too."},
