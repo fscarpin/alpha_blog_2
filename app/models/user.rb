@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-  has_many :articles
+  # will destroy all articles from this user, if this user is deleted
+  has_many :articles, dependent: :destroy
   has_secure_password
 
   before_save {

@@ -1,13 +1,16 @@
 class UsersController < ApplicationController
 
-  # Set the @user before show, edit and update methods
-  before_action :set_user, :only => [:show, :edit, :update]
+  # Set the @user before show, edit, update and destroy methods
+  before_action :set_user, :only => [:show, :edit, :update, :destroy]
 
-  # User must be logged in to edit and update profiles
-  before_action :require_user, :only => [:edit, :update]
+  # User must be logged in to edit, update and delete profiles
+  before_action :require_user, :only => [:edit, :update, :destroy]
 
-  # Users can only update their own profile
-  before_action :require_same_user, :only => [:edit, :update]
+  # Users can only update their own profile or delete their own accounts
+  before_action :require_same_user, :only => [:edit, :update, :destroy]
+
+  # Only admins are allowed to delete users
+  before_action :require_admin, :only => [:destroy]
 
   # Sign up form
   def new
@@ -50,6 +53,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    if @user.destroy
+      flash[:success] = "#{@user.username} account and articles has been deleted"
+    end
+
+    redirect_to users_path
+  end
+
   private
     def user_params
       params.require(:user).permit(:username, :email, :password)
@@ -60,9 +71,16 @@ class UsersController < ApplicationController
     end
 
     def require_same_user
-      if @user != current_user && !@user.admin?
+      if @user != current_user && !current_user.admin?
         flash[:danger] = "You can only edit your own profile"
         redirect_to(user_path current_user)
+      end
+    end
+
+    def require_admin
+      if !current_user.admin?
+        flash[:danger] = "Only admin users can  perform this action"
+        redirect_to users_path
       end
     end
 

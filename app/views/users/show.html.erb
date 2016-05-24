@@ -1,7 +1,7 @@
 <div class="text-center">
   <h1>Welcome to <%= @user.username %>'s page</h1>
-  <%= gravatar_for(@user, size: 190) %><br><br>
-
+  <%= gravatar_for(@user, size: 190) %>
+  <%= render 'delete_user_actions', user: @user %>
   <%= will_paginate(@user_articles, renderer: BootstrapPagination::Rails) %>
   <%= render "articles/articles_list", articles: @user_articles %>
   <%= will_paginate(@user_articles, renderer: BootstrapPagination::Rails) %>
