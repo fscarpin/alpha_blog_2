@@ -2,7 +2,12 @@ require "test_helper"
 
 class CreateCategoriesIntegrationTest < ActionDispatch::IntegrationTest
 
+  def setup
+    @user = User.create(username: "foo", password: "temp123", email: "foo@example.com", admin: true)
+  end
+
   test "get new category form and create category" do
+    login_as @user
     # Test if the new.html.erb is showed after a get request to new_category_path
     get new_category_path
     assert_template "categories/new"
@@ -16,6 +21,7 @@ class CreateCategoriesIntegrationTest < ActionDispatch::IntegrationTest
   end
 
   test "invalid category submission should show flash errors" do
+    login_as @user
     # Test if the new.html.erb is showed after a get request to new_category_path
     get new_category_path
     assert_template "categories/new"
