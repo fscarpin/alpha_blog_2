@@ -1,11 +1,22 @@
-<h1 class="text-center"> Categories </h1>
+<div class="text-center">
+<h1> Categories </h1>
 
-<div class="well well-lg">
-  <% @categories.each do |category| %>
-    <ul class="unstyled-list text-center">
-      <li class="article_title">
-        <%= link_to(category.name, category_path(category)) %>
-      </li>
-    </ul>
-  <% end %>
+<%= will_paginate @categories, renderer: BootstrapPagination::Rails %>
+
+<% @categories.each do |category| %>
+  <div class="row">
+    <div class="col-xs-4 col-xs-offset-4">
+      <div class="well well-lg">
+        <ul class="unstyled-list">
+          <li class="article_title">
+            <%= link_to(category.name, category_path(category)) %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<%= will_paginate @categories, renderer: BootstrapPagination::Rails %>
+
 </div>

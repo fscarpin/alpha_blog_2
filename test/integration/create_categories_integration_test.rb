@@ -1,6 +1,6 @@
 require "test_helper"
 
-class CategoriesIntegrationTest < ActionDispatch::IntegrationTest
+class CreateCategoriesIntegrationTest < ActionDispatch::IntegrationTest
 
   test "get new category form and create category" do
     # Test if the new.html.erb is showed after a get request to new_category_path
