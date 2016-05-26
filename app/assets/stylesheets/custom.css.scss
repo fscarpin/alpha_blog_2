@@ -70,13 +70,28 @@ $navbar-default-bg: #05001F;
 }
 
 .article_description {
-  padding-top: 5px;
+  padding-top: 15px;
   border-top: 1px solid #e6e6e6;
+  padding-bottom: 15px;
 }
 
 .unstyled-list {
   list-style-type: none;
   padding-left: 0px;
+}
+
+.unstyled-inline-list {
+  // padding: 5px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  list-style-type: none;
+  padding-left: 0px;
+}
+
+.unstyled-inline-list li {
+  display: inline;
+  padding: 4px;
+  // background: #C2DEFD;
 }
 
 .user_actions {

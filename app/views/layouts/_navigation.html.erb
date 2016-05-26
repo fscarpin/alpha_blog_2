@@ -34,6 +34,8 @@
                 <li> <%= link_to "New Category", new_category_path %> </li>
                 <li role="separator" class="divider"></li>
               <% end %>
+              <li> <%= link_to "All Categories", categories_path %> </li>
+              <li role="separator" class="divider"></li>
               <% Category.all.each do |category| %>
                 <li><%= link_to category.name, category_path(category) %></li>
               <% end %>

@@ -5,7 +5,13 @@
       <%= link_to article.title, article_path(article) %><br>
     </div>
     <!-- Show the article description -->
-    Description: <%= article.description.truncate_words(20, omission: '...') %><br><br>
+    <div class="article_description">
+      Description: <%= article.description.truncate_words(20, omission: '...') %>
+    </div>
+    <!-- Show the categories related to the article -->
+    <% if article.categories.any? %>
+      <p><%= render "articles/categories_list", categories: article.categories %></p>
+    <% end %>
     <!-- Show the user and the dates of the article -->
     <small>
       Created by <%= article.user.username %>, <%= time_ago_in_words(article.created_at) %> ago
@@ -13,11 +19,11 @@
     </small>
     <!-- Buttons to Edit and Delete the article (only if the user created it) -->
     <div class="article_actions">
-      <%= link_to "Show this article", article_path(article), class: "btn btn-success btn-xs" %>
+      <%= link_to "Show this article", article_path(article), class: "btn btn-success btn-sm" %>
       <% if (logged_in? && (current_user == article.user || current_user.admin?)) %>
-        <%= link_to "Edit this article", edit_article_path(article), class: "btn btn-primary btn-xs" %>
+        <%= link_to "Edit this article", edit_article_path(article), class: "btn btn-primary btn-sm" %>
         <%= link_to "Delete this article", article_path(article), method: :delete,
-                    class: "btn btn-danger btn-xs", data: {confirm: "Are you sure?"} %>
+                    class: "btn btn-danger btn-sm", data: {confirm: "Are you sure?"} %>
       <% end %>
     </div>
   </div>

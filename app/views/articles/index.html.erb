@@ -1,9 +1,11 @@
-<div class="text-center">
-  <h1>Article List</h1>
-</div>
+<h1 class="text-center">Article List</h1>
 
-<%= will_paginate @articles, renderer: BootstrapPagination::Rails %>
+<div class="text-center">
+  <%= will_paginate @articles, renderer: BootstrapPagination::Rails %>
+</div>
 
 <%= render "articles_list", articles: @articles %>
 
-<%= will_paginate @articles, renderer: BootstrapPagination::Rails %>
+<div class="text-center">
+  <%= will_paginate @articles, renderer: BootstrapPagination::Rails %>
+</div>

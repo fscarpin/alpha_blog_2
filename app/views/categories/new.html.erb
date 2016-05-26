@@ -1,14 +1,1 @@
-<%= render "shared/errors", model: @category %>
-
-<h1 class="text-center"> Create Category </h1>
-
-<%= bootstrap_form_for @category, inline_errors: false do |f| %>
-  <%= f.text_field :name %>
-  <%= f.submit "Create category", class: "btn btn-primary" %>
-<% end %>
-
-<div class="text-center">
-  <p>
-    [ <%= link_to "Back to articles", articles_path %> ]
-  </p>
-</div>
+<%= render "form", category: @category, locals: {form_title: "Create Category"} %>

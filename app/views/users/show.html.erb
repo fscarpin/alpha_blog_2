@@ -3,6 +3,10 @@
   <p><%= gravatar_for(@user, size: 190) %></p>
   <%= render 'delete_user_actions', user: @user %>
   <%= will_paginate(@user_articles, renderer: BootstrapPagination::Rails) %>
-  <%= render "articles/articles_list", articles: @user_articles %>
+</div>
+
+<%= render "articles/articles_list", articles: @user_articles %>
+
+<div class="text-center">
   <%= will_paginate(@user_articles, renderer: BootstrapPagination::Rails) %>
 </div>

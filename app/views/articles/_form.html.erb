@@ -7,6 +7,9 @@
 <%= bootstrap_form_for @article do |f| %>
     <%= f.text_field :title, autofocus: true %>
     <%= f.text_area :description, rows: 15 %>
+    <!-- :category_ids that we specified here will be passed as a param during the post, passing all the
+          category ids selected -->
+    <%= f.collection_check_boxes :category_ids, Category.all, :id, :name, inline: true, hide_label: true %>
     <%= f.submit class: "btn btn-primary"%>
 <% end %>
 

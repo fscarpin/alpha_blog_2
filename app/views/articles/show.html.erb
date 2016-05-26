@@ -6,8 +6,12 @@
   <h1 class="text-center"><%= @article.title %></h1>
   <div class="article_description">
     <!-- Simple_format show the text as it is... if the user pressed enter, it'll keep this new line -->
-    <p><%= simple_format(@article.description) %></p></br>
+    <p><%= simple_format(@article.description) %></p>
   </div>
+  <!-- Show the categories related to the article -->
+  <% if @article.categories.any? %>
+    <p><%= render "categories_list", categories: @article.categories %></p>
+  <% end %>
   <!-- Show the Edit, Delete and View all Articles button -->
   <div class="article_actions">
     <%= link_to "View all articles", articles_path, class: "btn btn-success" %>
