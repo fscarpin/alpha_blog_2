@@ -26,14 +26,14 @@ class CategoriesController < ApplicationController
   end
 
   private
-    def categories_param
-      params.require(:category).permit(:name)
-    end
+  def categories_param
+    params.require(:category).permit(:name)
+  end
 
-    def require_admin
-      if !logged_in? || !current_user.admin?
-        flash[:danger] = "You must be logged in with an admin account to create categories"
-        redirect_to root_path
-      end
+  def require_admin
+    if !logged_in? || !current_user.admin?
+      flash[:danger] = "You must be logged in with an admin account to create categories"
+      redirect_to root_path
     end
+  end
 end
