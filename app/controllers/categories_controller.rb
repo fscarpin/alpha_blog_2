@@ -3,7 +3,7 @@ class CategoriesController < ApplicationController
   before_action :require_admin, :only => [:new, :create, :edit, :update]
 
   def index
-    @categories = Category.paginate(:page => params[:page], per_page: 5)
+    @categories = Category.order("LOWER (name)").paginate(:page => params[:page], per_page: 5)
   end
 
   def show

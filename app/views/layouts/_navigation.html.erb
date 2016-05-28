@@ -36,8 +36,7 @@
               <% end %>
               <li> <%= link_to "All Categories", categories_path %> </li>
               <li role="separator" class="divider"></li>
-              <% sorted_categories = Category.all.sort_by{ |category| category.name.downcase } %>
-              <% sorted_categories.each do |category| %>
+                <% Category.all.order("LOWER (name)").each do |category| %>
                 <li>
                   <%= link_to "#{category.name} (#{category.articles.count})", category_path(category) %>
                 </li>
