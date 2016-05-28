@@ -11,6 +11,7 @@
           <li class="article_title">
             <%= link_to("#{category.name} (#{category.articles.count})", category_path(category)) %>
           </li>
+          <li><small> <%= pluralize(category.articles.count, "article") %></small></li>
         </ul>
         <% if logged_in? && current_user.admin? %>
           <%= link_to "Edit Name", edit_category_path(category), class: "btn btn-primary btn-xs" %>

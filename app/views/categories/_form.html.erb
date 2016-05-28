@@ -4,17 +4,24 @@ Pass the category and the form title to this partial
 Example:
   render "form", category: @category, locals: {form_title: "Create Category"}
  -->
-<%= render "shared/errors", model: category %>
 
-<h1 class="text-center"> <%= locals[:form_title] %> </h1>
+<div class="row">
+  <div class="col-xs-6 col-xs-offset-3">
 
-<%= bootstrap_form_for category, inline_errors: false do |f| %>
-  <%= f.text_field :name %>
-  <%= f.submit locals[:form_title], class: "btn btn-primary" %>
-<% end %>
+    <%= render "shared/errors", model: category %>
 
-<div class="text-center">
-  <p>
-    [ <%= link_to "Back to articles", articles_path %> ]
-  </p>
+    <h1 class="text-center"> <%= locals[:form_title] %> </h1>
+
+    <%= bootstrap_form_for category, inline_errors: false do |f| %>
+      <%= f.text_field :name %>
+      <%= f.submit locals[:form_title], class: "btn btn-primary" %>
+    <% end %>
+
+    <div class="text-center">
+      <p>
+        [ <%= link_to "Back to categories", categories_path %> ]
+      </p>
+    </div>
+
+  </div>
 </div>

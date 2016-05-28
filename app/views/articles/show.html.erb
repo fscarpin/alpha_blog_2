@@ -10,7 +10,7 @@
   </div>
   <!-- Show the categories related to the article -->
   <% if @article.categories.any? %>
-    <p><%= render "categories_list", categories: @article.categories %></p>
+    <p><%= render "categories/categories_list", categories: @article.categories %></p>
   <% end %>
   <!-- Show the Edit, Delete and View all Articles button -->
   <div class="article_actions">

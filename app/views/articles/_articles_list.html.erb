@@ -1,30 +1,41 @@
-<% articles.each do |article| %>
-  <div class="well well-lg">
-    <!-- Show the article title -->
-    <div class="article_title">
-      <%= link_to article.title, article_path(article) %><br>
-    </div>
-    <!-- Show the article description -->
-    <div class="article_description">
-      Description: <%= article.description.truncate_words(20, omission: '...') %>
-    </div>
-    <!-- Show the categories related to the article -->
-    <% if article.categories.any? %>
-      <p><%= render "articles/categories_list", categories: article.categories %></p>
+<!--
+Pass the articles to this partial
+Example:
+  render "articles_list", articles: @articles
+-->
+<div class="row">
+  <div class="col-xs-8 col-xs-offset-2">
+
+    <% articles.each do |article| %>
+      <div class="well well-lg">
+        <!-- Show the article title -->
+        <div class="article_title">
+          <%= link_to article.title, article_path(article) %><br>
+        </div>
+        <!-- Show the article description -->
+        <div class="article_description">
+          Description: <%= article.description.truncate_words(20, omission: '...') %>
+        </div>
+        <!-- Show the categories related to the article -->
+        <% if article.categories.any? %>
+          <p><%= render "categories/categories_list", categories: article.categories %></p>
+        <% end %>
+        <!-- Show the user and the dates of the article -->
+        <small>
+          Created by <%= article.user.username %>, <%= time_ago_in_words(article.created_at) %> ago
+          , last updated: <%= time_ago_in_words(article.updated_at) %>
+        </small>
+        <!-- Buttons to Edit and Delete the article (only if the user created it) -->
+        <div class="article_actions">
+          <%= link_to "Show this article", article_path(article), class: "btn btn-success btn-sm" %>
+          <% if (logged_in? && (current_user == article.user || current_user.admin?)) %>
+            <%= link_to "Edit this article", edit_article_path(article), class: "btn btn-primary btn-sm" %>
+            <%= link_to "Delete this article", article_path(article), method: :delete,
+                        class: "btn btn-danger btn-sm", data: {confirm: "Are you sure?"} %>
+          <% end %>
+        </div>
+      </div>
     <% end %>
-    <!-- Show the user and the dates of the article -->
-    <small>
-      Created by <%= article.user.username %>, <%= time_ago_in_words(article.created_at) %> ago
-      , last updated: <%= time_ago_in_words(article.updated_at) %>
-    </small>
-    <!-- Buttons to Edit and Delete the article (only if the user created it) -->
-    <div class="article_actions">
-      <%= link_to "Show this article", article_path(article), class: "btn btn-success btn-sm" %>
-      <% if (logged_in? && (current_user == article.user || current_user.admin?)) %>
-        <%= link_to "Edit this article", edit_article_path(article), class: "btn btn-primary btn-sm" %>
-        <%= link_to "Delete this article", article_path(article), method: :delete,
-                    class: "btn btn-danger btn-sm", data: {confirm: "Are you sure?"} %>
-      <% end %>
-    </div>
+
   </div>
-<% end %>
+</div>

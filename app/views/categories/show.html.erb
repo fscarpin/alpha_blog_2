@@ -1,3 +1,11 @@
 <h1 class="text-center">Category: <%= @category.name %> </h1>
 
-<%= render "articles/articles_list", articles: @category.articles %>
+<div class="text-center">
+  <%= will_paginate @category_articles, renderer: BootstrapPagination::Rails %>
+</div>
+
+<%= render "articles/articles_list", articles: @category_articles %>
+
+<div class="text-center">
+  <%= will_paginate @category_articles, renderer: BootstrapPagination::Rails %>
+</div>
